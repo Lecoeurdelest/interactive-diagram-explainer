@@ -16,7 +16,9 @@ The starter is a small implementation aid, not a universal chart library. The sk
 
 ## Install globally in Codex
 
-Copy the skill directory into your global skills directory:
+Installation and use require prior written permission from the applicable copyright holder. The instructions below are for authorized users; they do not grant a license. See [LICENSE](LICENSE).
+
+Once authorized, copy the skill directory into your global skills directory:
 
 ```sh
 mkdir -p ~/.codex/skills
@@ -63,3 +65,11 @@ Run the Python builder tests with `python3 -m unittest discover -s tests`. Brows
 ## Author
 
 Lecoeurdelest
+
+## License and copyright
+
+Copyright (c) 2026 Lecoeurdelest. **All rights reserved.**
+
+This repository is proprietary. No permission is granted to use, copy, modify, create derivative works from, distribute, or commercially or noncommercially exploit its original material without prior written permission from the applicable copyright holder, subject to the exceptions in [LICENSE](LICENSE).
+
+Contact [Lecoeurdelest](https://github.com/Lecoeurdelest) to request permission. Attribution alone does not authorize reuse.
