@@ -1,0 +1,17 @@
+{
+  "title": "Orders by region",
+  "language": "en",
+  "subtitle": "Fictional weekly totals. Select a bar to inspect its meaning.",
+  "type": "bars",
+  "mode": "explore",
+  "ui": {
+    "previous": "Previous", "next": "Next", "step": "Step {current} / {total}",
+    "diagramLabel": "Weekly orders by region, with a shared scale starting at zero",
+    "detailsLabel": "Selected region explanation", "source": "Source", "caveat": "Note"
+  },
+  "items": [
+    {"id": "north", "label": "North", "kind": "REGION", "value": 120, "unit": "orders", "explanation": "North recorded 120 orders in this fictional week. All regions use the same scale, so bar lengths can be compared directly.", "source": {"label": "Fictional teaching dataset in regions-en.json"}},
+    {"id": "central", "label": "Central", "kind": "REGION", "value": 80, "unit": "orders", "explanation": "Central recorded 80 orders, which is 40 fewer than North. Selecting this bar changes the explanation, not the underlying numbers.", "source": {"label": "Fictional teaching dataset in regions-en.json"}},
+    {"id": "south", "label": "South", "kind": "REGION", "value": 160, "unit": "orders", "explanation": "South recorded 160 orders, the largest count in this example. These totals describe one fictional week; they do not establish a trend or explain its causes.", "source": {"label": "Fictional teaching dataset in regions-en.json"}}
+  ]
+}

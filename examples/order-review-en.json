@@ -1,0 +1,58 @@
+{
+  "title": "Order review: check stock before packing",
+  "subtitle": "Illustrative example. Select any part to see its role and outcome.",
+  "language": "en",
+  "type": "flow",
+  "mode": "explore",
+  "initial": "new-order",
+  "ui": {
+    "previous": "Previous",
+    "next": "Next",
+    "step": "{current} / {total}",
+    "diagramLabel": "Order review flow with in-stock and out-of-stock branches",
+    "detailsLabel": "Selected part explained",
+    "source": "Source",
+    "caveat": "Note"
+  },
+  "items": [
+    {
+      "id": "new-order",
+      "label": "New order",
+      "kind": "Start",
+      "explanation": "A new order enters review. The next action is to check whether the ordered item is available in stock.",
+      "caveat": "This is an illustrative process, not a live order status."
+    },
+    {
+      "id": "check-stock",
+      "label": "Check stock",
+      "kind": "Decision",
+      "explanation": "Check whether the ordered item is available. Choose one outcome: if it is in stock, pack the order; if it is out of stock, notify the customer. These are alternative paths, not consecutive steps."
+    },
+    {
+      "id": "pack-order",
+      "label": "Pack the order",
+      "kind": "In-stock action",
+      "explanation": "When the item is in stock, pack the order. This is the last action described for the in-stock path; the example does not specify shipping or any later processing."
+    },
+    {
+      "id": "notify-customer",
+      "label": "Notify the customer",
+      "kind": "Out-of-stock action",
+      "explanation": "When the item is out of stock, inform the customer that it is unavailable. After this notification, the out-of-stock path ends.",
+      "caveat": "The example does not specify a communication channel or a refund policy."
+    },
+    {
+      "id": "end-unavailable",
+      "label": "End out-of-stock path",
+      "kind": "End",
+      "explanation": "The customer has been informed that the item is unavailable. This path ends without packing the order."
+    }
+  ],
+  "rows": [["new-order"], ["check-stock"], ["pack-order", "notify-customer"], ["end-unavailable"]],
+  "edges": [
+    {"from": "new-order", "to": "check-stock", "label": "Review availability"},
+    {"from": "check-stock", "to": "pack-order", "label": "In stock"},
+    {"from": "check-stock", "to": "notify-customer", "label": "Out of stock"},
+    {"from": "notify-customer", "to": "end-unavailable", "label": "After notification"}
+  ]
+}

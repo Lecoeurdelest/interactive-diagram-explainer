@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orders by region</title>
+<style>:root{color-scheme:light dark}body{margin:0;padding:clamp(12px,3vw,32px);font-family:system-ui,sans-serif;background:light-dark(#ffffff,#16181c);color:light-dark(#20242b,#f0f2f5)}*{box-sizing:border-box}</style>
+</head>
+<body>
+<section id="explainer-1bdcc5216cb040eb84e64799b97f0a79" class="ide-root">
+  <style>
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 {
+      color-scheme: light dark;
+      --ide-bg: var(--background, light-dark(#ffffff, #16181c));
+      --ide-fg: var(--foreground, light-dark(#20242b, #f0f2f5));
+      --ide-muted: var(--muted-foreground, light-dark(#555e6c, #b1b8c4));
+      --ide-card: var(--card, light-dark(#f2f4f7, #242831));
+      --ide-border: var(--border, light-dark(#c4ccd8, #555e6d));
+      --ide-accent: var(--viz-series-1, light-dark(#285bc0, #91b9ff));
+      --ide-soft: color-mix(in srgb, var(--ide-accent) 12%, var(--ide-bg));
+      font: 15px/1.5 system-ui, -apple-system, sans-serif;
+      color: var(--ide-fg);
+      width: 100%;
+      max-width: 850px;
+      margin-inline: auto;
+    }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 *, #explainer-1bdcc5216cb040eb84e64799b97f0a79 *::before, #explainer-1bdcc5216cb040eb84e64799b97f0a79 *::after { box-sizing: border-box; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 [hidden] { display: none !important; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 h2 { font-size: 1.25em; font-weight: 600; margin: 0 0 6px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-subtitle { margin: 0 0 14px; color: var(--ide-muted); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-stage { position: relative; padding: 16px 26px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-edges { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-edge { fill: none; stroke: var(--ide-border); stroke-width: 1.5; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-edge[data-active="true"] { stroke: var(--ide-accent); stroke-width: 2; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-arrow { fill: var(--ide-border); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-edge-label { fill: var(--ide-fg); stroke: var(--ide-bg); stroke-width: 5px; paint-order: stroke; font-size: 12px; text-anchor: middle; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-packet { fill: var(--ide-accent); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-flow { display: grid; gap: 40px; position: relative; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-row { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 button { font: inherit; color: inherit; cursor: pointer; touch-action: manipulation; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 button:focus-visible, #explainer-1bdcc5216cb040eb84e64799b97f0a79 a:focus-visible { outline: 3px solid var(--ide-accent); outline-offset: 4px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-node { position: relative; display: grid; gap: 2px; width: min(100%, 290px); padding: 10px 32px 10px 18px; min-height: 62px; background: var(--ide-card); border: 1px solid var(--ide-border); border-radius: 12px; text-align: center; overflow-wrap: anywhere; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-kind { display: block; color: var(--ide-muted); font-size: 12px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-name { font-weight: 600; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-check { position: absolute; right: 10px; top: 10px; font-weight: 700; opacity: 0; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-node[aria-pressed="true"] { background: var(--ide-soft); outline: 2px solid var(--ide-accent); outline-offset: 1px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 [aria-pressed="true"] .ide-check { opacity: 1; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 12px 0 16px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-control { background: var(--ide-card); border: 1px solid var(--ide-border); border-radius: 8px; padding: 8px 16px; min-height: 44px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-control:disabled { opacity: .45; cursor: default; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-count { color: var(--ide-muted); font-variant-numeric: tabular-nums; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-detail { margin-top: 14px; padding: 20px 22px; border-radius: 16px; background: var(--ide-card); overflow-wrap: anywhere; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-detail-heading { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 8px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-detail-kind { color: var(--ide-muted); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-detail-title { font-size: 1.08em; font-weight: 600; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-explanation { margin: 10px 0 0; white-space: pre-line; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-source, #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-caveat { color: var(--ide-muted); font-size: 13px; margin: 12px 0 0; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 a { color: var(--ide-accent); text-underline-offset: 3px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-bars { display: grid; gap: 12px; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-bar { position: relative; display: grid; grid-template-columns: minmax(80px, 1fr) minmax(70px, 2fr) minmax(62px, auto); gap: 12px; align-items: center; width: 100%; min-height: 58px; padding: 12px 32px 12px 10px; border: 1px solid transparent; border-radius: 6px; background: transparent; text-align: left; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-bar[aria-pressed="true"] { border-color: var(--ide-accent); background: var(--ide-soft); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-bar-label { overflow-wrap: anywhere; }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-track { display: block; height: 20px; background: color-mix(in srgb, var(--ide-fg) 6%, transparent); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-fill { display: block; height: 100%; background: var(--ide-accent); }
+    #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-value { text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    @media (max-width: 500px) {
+      #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-stage { padding-inline: 18px; }
+      #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-node { width: min(100%, 300px); }
+      #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-detail { padding: 16px; }
+      #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-bar { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+      #explainer-1bdcc5216cb040eb84e64799b97f0a79 .ide-bar-label { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #explainer-1bdcc5216cb040eb84e64799b97f0a79 *, #explainer-1bdcc5216cb040eb84e64799b97f0a79 *::before, #explainer-1bdcc5216cb040eb84e64799b97f0a79 *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+  <h2 class="ide-title"></h2>
+  <p class="ide-subtitle" hidden></p>
+  <div class="ide-stage" role="group">
+    <svg class="ide-edges" aria-hidden="true"></svg>
+    <div class="ide-visual"></div>
+  </div>
+  <div class="ide-controls" hidden>
+    <button type="button" class="ide-control ide-previous"></button>
+    <button type="button" class="ide-control ide-next"></button>
+    <span class="ide-count"></span>
+  </div>
+  <section class="ide-detail" aria-live="polite" aria-atomic="true">
+    <div class="ide-detail-heading"><span class="ide-detail-kind"></span><span aria-hidden="true">·</span><strong class="ide-detail-title"></strong></div>
+    <p class="ide-explanation"></p>
+    <p class="ide-caveat" hidden></p>
+    <p class="ide-source" hidden></p>
+  </section>
+  <script type="application/json" class="ide-model">{"title":"Orders by region","language":"en","subtitle":"Fictional weekly totals. Select a bar to inspect its meaning.","type":"bars","mode":"explore","ui":{"previous":"Previous","next":"Next","step":"Step {current} / {total}","diagramLabel":"Weekly orders by region, with a shared scale starting at zero","detailsLabel":"Selected region explanation","source":"Source","caveat":"Note"},"items":[{"id":"north","label":"North","kind":"REGION","value":120,"unit":"orders","explanation":"North recorded 120 orders in this fictional week. All regions use the same scale, so bar lengths can be compared directly.","source":{"label":"Fictional teaching dataset in regions-en.json"}},{"id":"central","label":"Central","kind":"REGION","value":80,"unit":"orders","explanation":"Central recorded 80 orders, which is 40 fewer than North. Selecting this bar changes the explanation, not the underlying numbers.","source":{"label":"Fictional teaching dataset in regions-en.json"}},{"id":"south","label":"South","kind":"REGION","value":160,"unit":"orders","explanation":"South recorded 160 orders, the largest count in this example. These totals describe one fictional week; they do not establish a trend or explain its causes.","source":{"label":"Fictional teaching dataset in regions-en.json"}}]}</script>
+  <script>
+    (() => {
+      const root = document.getElementById('explainer-1bdcc5216cb040eb84e64799b97f0a79');
+      const model = JSON.parse(root.querySelector('.ide-model').textContent);
+      const get = selector => root.querySelector(selector);
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const items = new Map(model.items.map(item => [item.id, item]));
+      const controls = new Map();
+      const paths = new Map();
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let selected;
+      let frame = 0;
+      let packet = null;
+      let pulse = null;
+      root.lang = model.language;
+      get('.ide-title').textContent = model.title;
+      get('.ide-stage').setAttribute('aria-label', model.ui.diagramLabel);
+      get('.ide-detail').setAttribute('aria-label', model.ui.detailsLabel);
+      if (model.subtitle) {
+        get('.ide-subtitle').hidden = false;
+        get('.ide-subtitle').textContent = model.subtitle;
+      }
+      function element(tag, cls, text) {
+        const result = document.createElement(tag);
+        if (cls) result.className = cls;
+        if (text !== undefined) result.textContent = text;
+        return result;
+      }
+      function svgElement(tag, attrs) {
+        const result = document.createElementNS(svgNS, tag);
+        for (const [key, value] of Object.entries(attrs)) result.setAttribute(key, value);
+        return result;
+      }
+      function createControl(item, cls) {
+        const button = element('button', cls);
+        button.type = 'button';
+        button.dataset.item = item.id;
+        button.setAttribute('aria-pressed', 'false');
+        const check = element('span', 'ide-check', '✓');
+        check.setAttribute('aria-hidden', 'true');
+        button.append(check);
+        button.addEventListener('click', () => select(item.id, true));
+        controls.set(item.id, button);
+        return button;
+      }
+      if (model.type === 'flow') {
+        const flow = element('div', 'ide-flow');
+        for (const row of model.rows) {
+          const rowElement = element('div', 'ide-row');
+          for (const id of row) {
+            const item = items.get(id);
+            const button = createControl(item, 'ide-node');
+            button.append(element('span', 'ide-kind', item.kind), element('span', 'ide-name', item.label));
+            rowElement.append(button);
+          }
+          flow.append(rowElement);
+        }
+        get('.ide-visual').append(flow);
+      } else {
+        get('.ide-edges').hidden = true;
+        const bars = element('div', 'ide-bars');
+        const maximum = Math.max(...model.items.map(item => item.value), 1);
+        const format = new Intl.NumberFormat(model.language);
+        for (const item of model.items) {
+          const button = createControl(item, 'ide-bar');
+          const track = element('span', 'ide-track');
+          const fill = element('span', 'ide-fill');
+          fill.style.width = `${item.value / maximum * 100}%`;
+          track.setAttribute('aria-hidden', 'true');
+          track.append(fill);
+          const value = format.format(item.value) + (item.unit ? ` ${item.unit}` : '');
+          button.append(element('span', 'ide-bar-label', item.label), track, element('span', 'ide-value', value));
+          bars.append(button);
+        }
+        get('.ide-visual').append(bars);
+      }
+      function cancelFeedback() {
+        cancelAnimationFrame(frame);
+        frame = 0;
+        if (packet) packet.remove();
+        packet = null;
+        if (pulse) pulse.cancel();
+        pulse = null;
+        root.dataset.animating = 'false';
+      }
+      function drawEdges() {
+        if (model.type !== 'flow') return;
+        cancelFeedback();
+        const svg = get('.ide-edges');
+        const stage = get('.ide-stage').getBoundingClientRect();
+        svg.setAttribute('viewBox', `0 0 ${stage.width} ${stage.height}`);
+        svg.replaceChildren();
+        paths.clear();
+        const defs = svgElement('defs', {});
+        const marker = svgElement('marker', {id: `${root.id}-arrow`, viewBox: '0 0 8 8', refX: '7', refY: '4', markerWidth: '6', markerHeight: '6', orient: 'auto'});
+        marker.append(svgElement('path', {d: 'M 0 0 L 8 4 L 0 8 Z', class: 'ide-arrow'}));
+        defs.append(marker);
+        svg.append(defs);
+        for (const edge of model.edges) {
+          const a = controls.get(edge.from).getBoundingClientRect();
+          const b = controls.get(edge.to).getBoundingClientRect();
+          let d;
+          let labelPoint;
+          if (edge.from === edge.to) {
+            const x = a.left - stage.left;
+            const y = a.top + a.height / 2 - stage.top;
+            const lane = Math.max(1, x - 24);
+            d = `M ${x} ${y-10} C ${lane} ${y-34}, ${lane} ${y+34}, ${x-4} ${y+10}`;
+          } else if (Math.abs(a.top - b.top) < 8) {
+            const forward = b.left > a.left;
+            const x1 = (forward ? a.right : a.left) - stage.left;
+            const x2 = (forward ? b.left - 4 : b.right + 4) - stage.left;
+            const y1 = a.top + a.height / 2 - stage.top;
+            const y2 = b.top + b.height / 2 - stage.top;
+            d = `M ${x1} ${y1} C ${(x1+x2)/2} ${y1}, ${(x1+x2)/2} ${y2}, ${x2} ${y2}`;
+          } else if (b.top > a.top) {
+            const x1 = a.left + a.width / 2 - stage.left;
+            const x2 = b.left + b.width / 2 - stage.left;
+            const y1 = a.bottom - stage.top;
+            const y2 = b.top - stage.top - 4;
+            const obstructed = [...controls.entries()].some(([id, button]) => {
+              if (id === edge.from || id === edge.to) return false;
+              const rect = button.getBoundingClientRect();
+              return rect.bottom - stage.top > y1 && rect.top - stage.top < y2 &&
+                rect.left - stage.left < Math.max(x1, x2) + 2 && rect.right - stage.left > Math.min(x1, x2) - 2;
+            });
+            if (obstructed) {
+              const startX = a.right - stage.left;
+              const endX = b.right - stage.left + 4;
+              const startY = a.top + a.height / 2 - stage.top;
+              const endY = b.top + b.height / 2 - stage.top;
+              const lane = stage.width - 5;
+              d = `M ${startX} ${startY} H ${lane} V ${endY} H ${endX}`;
+              labelPoint = {x: x2, y: b.top - stage.top - 10};
+            } else {
+              d = `M ${x1} ${y1} C ${x1} ${(y1+y2)/2}, ${x2} ${(y1+y2)/2}, ${x2} ${y2}`;
+            }
+          } else {
+            const x1 = a.left - stage.left;
+            const x2 = b.left - stage.left - 4;
+            const y1 = a.top + a.height / 2 - stage.top;
+            const y2 = b.top + b.height / 2 - stage.top;
+            const lane = Math.max(2, Math.min(x1, x2) - 18);
+            d = `M ${x1} ${y1} C ${lane} ${y1}, ${lane} ${y2}, ${x2} ${y2}`;
+          }
+          const path = svgElement('path', {d, class: 'ide-edge', 'marker-end': `url(#${root.id}-arrow)`, 'data-from': edge.from, 'data-to': edge.to, 'data-active': String(edge.to === selected)});
+          svg.append(path);
+          paths.set(`${edge.from}|${edge.to}`, path);
+          if (edge.label) {
+            const point = labelPoint || path.getPointAtLength(path.getTotalLength() / 2);
+            const label = svgElement('text', {x: point.x, y: labelPoint ? point.y : point.y - 6, class: 'ide-edge-label'});
+            label.textContent = edge.label;
+            svg.append(label);
+          }
+        }
+      }
+      function feedback(previous, next) {
+        cancelFeedback();
+        if (reduced.matches) return;
+        root.dataset.animating = 'true';
+        const indicator = controls.get(next).querySelector('.ide-check');
+        pulse = indicator.animate([{opacity: .2, transform: 'translateX(-6px)'}, {opacity: 1, transform: 'translateX(0)'}], {duration: 360, easing: 'ease-out'});
+        const path = paths.get(`${previous}|${next}`);
+        if (!path) {
+          pulse.onfinish = () => { root.dataset.animating = 'false'; };
+          return;
+        }
+        packet = svgElement('circle', {r: '4', class: 'ide-packet'});
+        const startPoint = path.getPointAtLength(0);
+        packet.setAttribute('cx', startPoint.x);
+        packet.setAttribute('cy', startPoint.y);
+        get('.ide-edges').append(packet);
+        const length = path.getTotalLength();
+        let start;
+        const tick = now => {
+          if (!packet) return;
+          if (start === undefined) start = now;
+          const progress = Math.min((now - start) / 440, 1);
+          const point = path.getPointAtLength(length * progress);
+          packet.setAttribute('cx', point.x);
+          packet.setAttribute('cy', point.y);
+          if (progress < 1) frame = requestAnimationFrame(tick);
+          else { packet.remove(); packet = null; root.dataset.animating = 'false'; }
+        };
+        frame = requestAnimationFrame(tick);
+      }
+      function savedId(state) {
+        const content = state && (state.modelContent || state);
+        const saved = content && content.explainer;
+        return saved && saved.title === model.title && saved.language === model.language && items.has(saved.selectedId) ? saved.selectedId : null;
+      }
+      function persist() {
+        try {
+          if (window.openai && window.openai.setWidgetState) {
+            Promise.resolve(window.openai.setWidgetState({modelContent: {explainer: {title: model.title, language: model.language, selectedId: selected}}, privateContent: null})).catch(() => {});
+          }
+        } catch (_) { /* Host state is optional. */ }
+      }
+      function select(id, userAction = false) {
+        if (!items.has(id)) return;
+        const previous = selected;
+        selected = id;
+        root.dataset.selected = id;
+        const item = items.get(id);
+        for (const [key, button] of controls) button.setAttribute('aria-pressed', String(key === id));
+        for (const [key, path] of paths) path.dataset.active = String(key.split('|')[1] === id);
+        get('.ide-detail-kind').textContent = item.kind;
+        get('.ide-detail-title').textContent = item.label;
+        get('.ide-explanation').textContent = item.explanation;
+        const caveat = get('.ide-caveat');
+        caveat.hidden = !item.caveat;
+        caveat.textContent = item.caveat ? `${model.ui.caveat}: ${item.caveat}` : '';
+        const source = get('.ide-source');
+        source.hidden = !item.source;
+        source.replaceChildren();
+        if (item.source) {
+          source.append(document.createTextNode(model.ui.source + ': '));
+          if (item.source.url) {
+            const link = element('a', '', item.source.label);
+            link.href = item.source.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            source.append(link);
+          } else source.append(document.createTextNode(item.source.label));
+        }
+        if (model.mode === 'step') {
+          const index = model.order.indexOf(id);
+          get('.ide-previous').disabled = index <= 0;
+          get('.ide-next').disabled = index >= model.order.length - 1;
+          get('.ide-count').textContent = model.ui.step.replaceAll('{current}', String(index + 1)).replaceAll('{total}', String(model.order.length));
+        }
+        cancelFeedback();
+        if (userAction) { feedback(previous, id); persist(); }
+      }
+      if (model.mode === 'step') {
+        get('.ide-controls').hidden = false;
+        get('.ide-previous').textContent = model.ui.previous;
+        get('.ide-next').textContent = model.ui.next;
+        get('.ide-previous').addEventListener('click', () => select(model.order[model.order.indexOf(selected) - 1], true));
+        get('.ide-next').addEventListener('click', () => select(model.order[model.order.indexOf(selected) + 1], true));
+      }
+      const initial = savedId(window.openai && window.openai.widgetState) || model.initial || (model.mode === 'step' ? model.order[0] : model.items[0].id);
+      select(initial);
+      drawEdges();
+      if (window.ResizeObserver) new ResizeObserver(drawEdges).observe(get('.ide-stage'));
+      else window.addEventListener('resize', drawEdges);
+      reduced.addEventListener('change', cancelFeedback);
+      window.addEventListener('openai:set_globals', event => {
+        const id = savedId(event.detail && event.detail.globals && event.detail.globals.widgetState);
+        if (id) select(id);
+      });
+    })();
+  </script>
+</section>
+
+</body>
+</html>

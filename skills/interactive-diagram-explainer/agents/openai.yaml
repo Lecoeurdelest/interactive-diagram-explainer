@@ -1,0 +1,4 @@
+interface:
+  display_name: "Interactive Diagram Explainer"
+  short_description: "Explore diagrams with animation and clear explanations"
+  default_prompt: "Use $interactive-diagram-explainer to explain this topic with an interactive diagram and a synchronized explanation panel."

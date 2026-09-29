@@ -1,0 +1,25 @@
+{
+  "title": "Một công việc đi từ API tới worker",
+  "language": "vi",
+  "subtitle": "Ví dụ minh hoạ. Chọn từng ô hoặc bấm Tiếp để lần theo một công việc.",
+  "type": "flow",
+  "mode": "step",
+  "order": ["producer", "queue", "worker", "record"],
+  "rows": [["producer"], ["queue"], ["worker"], ["record"]],
+  "edges": [
+    {"from": "producer", "to": "queue", "label": "gửi job"},
+    {"from": "queue", "to": "worker", "label": "giao job"},
+    {"from": "worker", "to": "record", "label": "lưu kết quả"}
+  ],
+  "ui": {
+    "previous": "Trước", "next": "Tiếp", "step": "Bước {current} / {total}",
+    "diagramLabel": "Đường đi của công việc qua API, queue, worker và cơ sở dữ liệu",
+    "detailsLabel": "Giải thích lựa chọn", "source": "Nguồn", "caveat": "Lưu ý"
+  },
+  "items": [
+    {"id": "producer", "kind": "HÀM TRONG API", "label": "enqueue_job()", "explanation": "API gọi enqueue_job() để tạo message mô tả công việc và gửi message vào queue. Trong ví dụ này, công việc sẽ được worker xử lý sau.", "caveat": "Đây là ví dụ khái niệm; tên hàm được đặt để minh hoạ, không trích từ hệ thống đang chạy."},
+    {"id": "queue", "kind": "QUEUE", "label": "Chờ giao công việc", "explanation": "Queue giữ message cho tới khi giao được cho một worker phù hợp. Message chứa thông tin cần thiết để worker biết phải thực hiện công việc nào."},
+    {"id": "worker", "kind": "WORKER", "label": "Chạy process_job()", "explanation": "Worker nhận message rồi gọi process_job(). Hàm thực hiện công việc bên trong tiến trình worker; tên hàm và worker là hai khái niệm khác nhau."},
+    {"id": "record", "kind": "BẢN GHI DB", "label": "Lưu trạng thái hoàn tất", "explanation": "Worker ghi kết quả và trạng thái hoàn tất vào cơ sở dữ liệu. Bản ghi này cho phép hệ thống đọc lại kết quả sau khi lần xử lý kết thúc."}
+  ]
+}
