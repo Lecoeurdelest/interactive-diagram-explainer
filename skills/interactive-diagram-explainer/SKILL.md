@@ -58,8 +58,9 @@ Use `--format fragment` for an inline HTML surface. Use `--force` only to replac
 
 Choose delivery based on the environment:
 
-- **Codex inline visualization:** generate a fragment in the task's writable visualization directory, when supplied. Otherwise use a durable output directory in the authorized workspace. Show it in the same final response with `visualize{"path":"/absolute/path/output.html"}`. Do not use system temporary storage as the user-facing result. Optional host state APIs must remain guarded; the result must work without them.
-- **Standalone HTML or another environment:** generate a standalone file and use that environment's supported preview or artifact mechanism. Do not emit an unsupported Codex directive. When asked for an export, deliver the standalone version.
+- **Host with an inline visualization tool** (for example Codex `visualize`): generate a fragment in the host's writable visualization directory, when supplied, otherwise a durable output directory in the authorized workspace, and show it with the host's documented mechanism. Do not use system temporary storage as the user-facing result. Optional host state APIs must remain guarded; the result must work without them.
+- **Host with an artifact or preview mechanism** (for example Claude artifacts): generate a standalone file and publish or preview it with that mechanism.
+- **Standalone HTML, chat-only models, or any other environment:** generate a standalone file, or return the full HTML in a code block when files cannot be written. Do not emit a host directive the environment does not support. When asked for an export, deliver the standalone version.
 - **Existing app:** follow its design and component conventions. Apply the interaction contract without replacing the app's interface or architecture.
 
 Keep output self-contained when practical. Use host theme variables when present, with readable standalone fallbacks. Support narrow screens, light and dark themes, keyboard use, and touch. Selection must not rely only on color. Use native controls, visible focus, and a polite live region for selection details; avoid announcing every animation frame.

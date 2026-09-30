@@ -14,20 +14,23 @@ Diagram labels and explanations follow the user's requested language, or the lan
 
 The starter is a small implementation aid, not a universal chart library. The skill's behavior contract applies to other renderers as well.
 
-## Install globally in Codex
+## Install
 
 Installation and use require prior written permission from the applicable copyright holder. The instructions below are for authorized users; they do not grant a license. See [LICENSE](LICENSE).
 
-Once authorized, copy the skill directory into your global skills directory:
+The skill is a standard `SKILL.md` folder plus a dependency-free Python builder, so it works with any agent that can read files and run a command.
 
-```sh
-mkdir -p ~/.codex/skills
-cp -R skills/interactive-diagram-explainer ~/.codex/skills/
-```
+| Platform | Install |
+|---|---|
+| Claude Code | `python3 skills/interactive-diagram-explainer/scripts/install.py claude` (installs to `~/.claude/skills`) |
+| Codex | `python3 skills/interactive-diagram-explainer/scripts/install.py codex` (uses `CODEX_HOME` when set) |
+| Other agents that read `.agents/skills` | `python3 skills/interactive-diagram-explainer/scripts/install.py agents` |
+| Agents that read `AGENTS.md` (Grok Build, Cursor, Aider, OpenCode, and others) | Work inside this repository; [AGENTS.md](AGENTS.md) points to the skill. |
+| DeepSeek, Grok, Gemini, or any chat model | Use [adapters/generic-prompt.md](adapters/generic-prompt.md) as the system prompt, then run the builder on the JSON it returns. |
 
-If a skill with that name is already installed, inspect it before replacing it. When `CODEX_HOME` is configured, use its `skills` directory instead. The skill is available on the next turn after installation.
+Use `all` to install for every skill directory, `--project DIR` to install under `DIR/.<platform>/skills`, `--dest DIR` for a custom skills directory, and `--force` to replace an existing copy. Inspect an existing skill before replacing it.
 
-Use `$interactive-diagram-explainer`, or ask for an explanatory interactive diagram. Automatic discovery remains enabled.
+Invoke it with `/interactive-diagram-explainer` (Claude Code), `$interactive-diagram-explainer` (Codex), or by asking for an explanatory interactive diagram. Automatic discovery remains enabled. `agents/openai.yaml` is optional Codex UI metadata; other platforms ignore it.
 
 ## Examples
 
@@ -56,6 +59,10 @@ skills/interactive-diagram-explainer/
   references/interaction-patterns.md
   references/data-model.md
   scripts/build_explainer.py
+  scripts/install.py
+adapters/generic-prompt.md
+AGENTS.md
+CLAUDE.md
 examples/
 tests/
 ```
